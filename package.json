@@ -1,0 +1,12 @@
+{
+  "name": "codebreaker-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/WoLkErSs/codebreaker-web.git",
+  "author": "Ivan Pauls <ivanpauls1705@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1"
+  }
+}
