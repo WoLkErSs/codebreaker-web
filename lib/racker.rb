@@ -12,15 +12,21 @@ class Racker
 
   def response
     case @request.path
-    when '/' then Rack::Response.new(render('menu'))
+    when '/' then main
     when '/lose' then Rack::Response.new(render('lose'))
     when '/stats' then Rack::Response.new(render('statistics'))
     when '/win' then Rack::Response.new(render('win'))
     when '/game' then game
     when '/start' then start
     when '/show_hint' then hint
+    when '/zero' then zero
     else show_page('menu')
     end
+  end
+
+  def main
+    clear_session
+    show_page('menu')
   end
 
   def game
@@ -59,6 +65,7 @@ class Racker
   end
 
   def start
+    return show_page('game') unless current_game
     clear_session
     @request.session[:hints] = ''
     @request.session[:level] = @request.params['level']
