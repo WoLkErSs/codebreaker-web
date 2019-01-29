@@ -97,15 +97,10 @@ class Racker
   end
 
   def render(template)
-    layout_path = File.expand_path("../views/layout.haml", __FILE__)
+    layout_path = File.expand_path("../../lib/views/layout.haml", __FILE__)
     Haml::Engine.new(File.read(layout_path)).render do
-      path = File.expand_path("../views/#{template}.haml", __FILE__)
+      path = File.expand_path("../../lib/views/#{template}.haml", __FILE__)
       Haml::Engine.new(File.read(path)).render(binding)
     end
   end
-
-  # def render(template)
-  #   path = File.expand_path("../../lib/views/#{template}.haml", __FILE__)
-  #   Haml::Engine.new(File.read(path)).render(binding)
-  # end
 end
