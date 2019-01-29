@@ -96,16 +96,16 @@ class Racker
     @request.params['player_name']
   end
 
-  def layout_page
-    path_l = File.expand_path("../../lib/views/layout.haml", __FILE__)
-    Haml::Engine.new(File.read(path_l)).render do
-      path = File.expand_path("../../lib/views/game.haml", __FILE__)
-      Haml::Engine.new(File.read(path)).render
+  def render(template)
+    layout_path = File.expand_path("../views/layout.haml", __FILE__)
+    Haml::Engine.new(File.read(layout_path)).render do
+      path = File.expand_path("../views/#{template}.haml", __FILE__)
+      Haml::Engine.new(File.read(path)).render(binding)
     end
   end
 
-  def render(template)
-    path = File.expand_path("../../lib/views/#{template}.haml", __FILE__)
-    Haml::Engine.new(File.read(path)).render(binding)
-  end
+  # def render(template)
+  #   path = File.expand_path("../../lib/views/#{template}.haml", __FILE__)
+  #   Haml::Engine.new(File.read(path)).render(binding)
+  # end
 end
