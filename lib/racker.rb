@@ -19,11 +19,13 @@ class Racker
     when '/game' then game
     when '/start' then start
     when '/show_hint' then hint
+    else show_page('menu')
     end
   end
 
   def game
     return show_page('menu') unless current_game
+
     @request.session[:bug] =  @request.params['number']
     @request.session[:merkers] = current_game.attempt(@request.params['number'])
     return show_page('win') if current_game.winner
@@ -86,6 +88,12 @@ class Racker
 
   def player_name
     @request.params['player_name']
+  end
+
+  def layout
+    Haml::Engine.new(File.read("layout.html.haml")).render do
+      Haml::Engine.new(File.read("view.html.haml")).render
+    end
   end
 
   def render(template)
