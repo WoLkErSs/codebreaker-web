@@ -20,7 +20,7 @@ class Racker
     when '/start' then start
     when '/show_hint' then hint
     when '/zero' then zero
-    else show_page('menu')
+    else show_page('error')
     end
   end
 
@@ -65,7 +65,6 @@ class Racker
   end
 
   def start
-    return show_page('game') unless current_game
     clear_session
     @request.session[:hints] = ''
     @request.session[:level] = @request.params['level']
@@ -97,9 +96,11 @@ class Racker
     @request.params['player_name']
   end
 
-  def layout
-    Haml::Engine.new(File.read("layout.html.haml")).render do
-      Haml::Engine.new(File.read("view.html.haml")).render
+  def layout_page
+    path_l = File.expand_path("../../lib/views/layout.haml", __FILE__)
+    Haml::Engine.new(File.read(path_l)).render do
+      path = File.expand_path("../../lib/views/game.haml", __FILE__)
+      Haml::Engine.new(File.read(path)).render
     end
   end
 

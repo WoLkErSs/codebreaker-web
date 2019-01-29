@@ -43,10 +43,11 @@
                     =current_game.have_hints
                     from
                     =current_game.hints_total
+                    =debug
             %hr.mb-4/
             %form{action: "/game", method: "post"}
               .form-group
-                %input.form-control.guess_input{autocomplete: "off", name: "number", value: "", pattern: "^[1-6]{4}$", placeholder: "#{current_guess}", required: ""}/
+                %input.form-control.guess_input{autocomplete: "off", name: "number", pattern: "^[1-6]{4}$", placeholder: "#{current_guess}", required: ""}/
               .form-group.guess_markers_list
                 #guess_marker
                   -markers_answer.each do |mark|
