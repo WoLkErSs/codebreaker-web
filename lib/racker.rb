@@ -1,7 +1,3 @@
-
-require 'haml'
-require 'codebreaker'
-
 class Racker
   ZERO_ATTEMPTS = 0.freeze
 
@@ -19,9 +15,17 @@ class Racker
     when '/stats' then Rack::Response.new(render('statistics'))
     when '/check_number' then check_number
     when '/start' then start
+    when '/rules' then show_page('rules')
+    when '/stats' then statistic
     when '/show_hint' then hint
-    else show_page('/error404')
+    else show_page('error404')
     end
+  end
+
+  def statistic
+    binding.pry
+    Codebreaker::Statistics.winners(load_db)
+    show_page('statistics')
   end
 
   def check_game_state
@@ -69,8 +73,8 @@ class Racker
   def start
     return show_page('menu') unless @request.params['player_name']
 
-    clear_session
     @request.session[:hints] = ''
+    @request.session[:name] = @request.params['player_name']
     @request.session[:level] = @request.params['level']
     current_player = Codebreaker::Player.new
     current_player.assign_name(@request.params['player_name'].capitalize)
@@ -101,7 +105,7 @@ class Racker
   end
 
   def player_name
-    @request.params['player_name']
+    @request.session[:name]
   end
 
   def render(template)

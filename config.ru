@@ -1,4 +1,5 @@
-require './lib/racker'
+require_relative './autoload.rb'
+
 use Rack::Reloader
 use Rack::Session::Cookie, :key => 'rack.session',
                            :path => '/',

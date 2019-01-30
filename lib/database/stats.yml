@@ -1,0 +1,10 @@
+--- !ruby/object:Codebreaker::Game
+got_hints: ''
+hints_used: 0
+attempts_used: 1
+name: '1234'
+attempts_total: 15
+hints_total: 2
+attempts_left: 14
+difficulty: easy
+secret_code: '1234'

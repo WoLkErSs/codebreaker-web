@@ -1,34 +1,36 @@
 .row
   .col.button
     %button.btn.btn-primary{disabled: "disabled", type: "button"}
-      Level:
+      =I18n.t(:'game.level')
       %span.badge.badge-light
         =level
+  .col.text-center.button
     %button.btn.btn-primary{disabled: "disabled", type: "button"}
-      Attempts Left:
+      =I18n.t(:'game.attempts')
       %span.badge.badge-light
         =current_game.attempts_left
-        from
+        =I18n.t(:'game.from')
         =current_game.attempts_total
-    %button.btn.btn-primary{disabled: "disabled", type: "button"}
-      Hints Left:
+  .col.button
+    %button.btn.btn-primary.float-right{type: "button"}
+      =I18n.t(:'game.hints')
       %span.badge.badge-light
         =current_game.have_hints
-        from
+        =I18n.t(:'game.from')
         =current_game.hints_total
 %hr.mb-4/
 .row
   .text-center
     .text-center
       %h3.text-white
-        Oops, NAME! You lose the game!
+        =I18n.t(:'lose.you_lose', name: -current_game.name)
       %h4.text-white
-        The code was
+        =I18n.t(:'lose.code')
         %strong 1553
         - clear_session
     %img.img-fluid{alt: "You lose the game!", src: "assets/images/lost.gif"}/
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{href: "/", role: "button"}
-  Play again!
+  =I18n.t(:'play_again_btn')
 %a.btn.btn-success.btn-lg.float-right{href: "#", role: "button"}
-  Statistics
+  =I18n.t(:stats_btn)
