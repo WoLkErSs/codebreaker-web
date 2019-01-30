@@ -25,7 +25,7 @@
         from
         =current_game.hints_total
 %hr.mb-4/
-%form{action: "/game", method: "post"}
+%form{action: "/check_number", method: "post"}
   .form-group
     %input.form-control.guess_input{autocomplete: "off", name: "number", pattern: "^[1-6]{4}$", placeholder: "#{current_guess}", required: ""}/
   .form-group.guess_markers_list

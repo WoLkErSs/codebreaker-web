@@ -1,7 +1,10 @@
+
 require 'haml'
 require 'codebreaker'
 
 class Racker
+  ZERO_ATTEMPTS = 0.freeze
+
   def self.call(env)
     new(env).response.finish
   end
@@ -12,41 +15,40 @@ class Racker
 
   def response
     case @request.path
-    when '/' then main
-    when '/lose' then Rack::Response.new(render('lose'))
+    when '/game', '/lose', '/', '/win' then check_game_state
     when '/stats' then Rack::Response.new(render('statistics'))
-    when '/win' then Rack::Response.new(render('win'))
-    when '/game' then game
+    when '/check_number' then check_number
     when '/start' then start
     when '/show_hint' then hint
-    when '/zero' then zero
-    else show_page('error')
+    else show_page('/error404')
     end
   end
 
-  def main
-    clear_session
-    show_page('menu')
-  end
-
-  def game
+  def check_game_state
     return show_page('menu') unless current_game
-
-    @request.session[:bug] =  @request.params['number']
-    @request.session[:merkers] = current_game.attempt(@request.params['number'])
+    return show_page('game') if game_go_on?
     return show_page('win') if current_game.winner
-    return show_page('lose') unless current_game.attempts_left > 0
-
-    show_page('game')
+    return show_page('lose') if current_game.attempts_left == ZERO_ATTEMPTS
   end
 
-  def debug
-    @request.session[:bug]
+  def game_go_on?
+    !current_game.winner && current_game.attempts_left > ZERO_ATTEMPTS
+  end
+
+  def check_number
+    return show_page('menu') unless current_game
+    return show_page('game') unless @request.params['number']
+
+    @request.session[:number] = @request.params['number']
+    @request.session[:markers] = current_game.attempt(@request.params['number'])
+    redirect_to('/')
   end
 
   def hint
+    return show_page('menu') unless current_game
+
     @request.session[:hints] += current_game.attempt(Codebreaker::Game::GUESS_CODE[:hint]) if current_game.have_hints > 0
-    show_page('game')
+    redirect_to('game')
   end
 
   def show_hints
@@ -58,30 +60,36 @@ class Racker
   end
 
   def markers_answer
-    return ['', '', '', ''] unless @request.session[:merkers]
-    marks = @request.session[:merkers].chars
+    return ['', '', '', ''] unless @request.session[:markers]
+    marks = @request.session[:markers].chars
     Codebreaker::Game::RANGE_OF_DIGITS.last.times { marks.push('') }
     marks.first(Codebreaker::Game::RANGE_OF_DIGITS.last)
   end
 
   def start
+    return show_page('menu') unless @request.params['player_name']
+
     clear_session
     @request.session[:hints] = ''
     @request.session[:level] = @request.params['level']
     current_player = Codebreaker::Player.new
     current_player.assign_name(@request.params['player_name'].capitalize)
-    current_game = Codebreaker::Game.new
-    current_game.game_options(user_difficulty: @request.params['level'], player: current_player)
-    @request.session[:game] = current_game
-    show_page('game')
+    game = Codebreaker::Game.new
+    game.game_options(user_difficulty: @request.params['level'], player: current_player)
+    @request.session[:game] = game
+    redirect_to('game')
+  end
+
+  def redirect_to(url)
+    Rack::Response.new { |response| response.redirect(url) }
   end
 
   def current_game
     @request.session[:game]
   end
 
-  def show_page(page_name)
-    Rack::Response.new(render(page_name))
+  def show_page(page)
+    Rack::Response.new(render(page))
   end
 
   def level
@@ -89,7 +97,7 @@ class Racker
   end
 
   def current_guess
-    @request.params['number']
+    @request.session[:number]
   end
 
   def player_name
