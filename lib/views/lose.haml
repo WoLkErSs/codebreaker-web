@@ -26,11 +26,12 @@
         =I18n.t(:'lose.you_lose', name: -current_game.name)
       %h4.text-white
         =I18n.t(:'lose.code')
-        %strong 1553
+        %strong
+          =current_game.secret_code.join('')
         - clear_session
     %img.img-fluid{alt: "You lose the game!", src: "assets/images/lost.gif"}/
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{href: "/", role: "button"}
   =I18n.t(:'play_again_btn')
-%a.btn.btn-success.btn-lg.float-right{href: "#", role: "button"}
+%a.btn.btn-success.btn-lg.float-right{href: "/stats", role: "button"}
   =I18n.t(:stats_btn)

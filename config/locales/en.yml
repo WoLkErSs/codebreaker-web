@@ -4,24 +4,24 @@ en:
   back: 'Back'
   layout:
     title: 'Codebreaker Web'
-    app_name: 'Codebreaker 2018\n'
+    app_name: 'Codebreaker 2018'
   menu:
-    short_rules: 'Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.\n'
-    place_name: "Player's name:\n"
-    place_level: 'Game level:\n'
+    short_rules: 'Try to guess 4-digit number, that consists of numbers in a range from 1 to 6.'
+    place_name: "Player's name:"
+    place_level: 'Game level:'
     plaseholder_name: 'Your name'
-    plaseholder_game: 'Choose game level...\n'
-    start_btn: 'Start the game!\n'
+    plaseholder_game: 'Choose game level...'
+    start_btn: 'Start the game!'
     rules_btn: 'Rules'
     easy: 'Easy'
     hard: 'Hard'
     expert: 'Expert'
   game:
     greeting: "Hello, %{name}"
-    level: 'Level:\n'
-    attempts: 'Attempts:\n'
-    from: 'from\n'
-    hints: 'Hints:\n'
+    level: 'Level:'
+    attempts: 'Attempts:'
+    from: 'from'
+    hints: 'Hints:'
     X_mark: 'X'
     submit_btn: 'Submit'
     hints_btn: 'Show hint!'

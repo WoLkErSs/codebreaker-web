@@ -12,20 +12,19 @@ class Racker
   def response
     case @request.path
     when '/game', '/lose', '/', '/win' then check_game_state
-    when '/stats' then Rack::Response.new(render('statistics'))
     when '/check_number' then check_number
     when '/start' then start
     when '/rules' then show_page('rules')
-    when '/stats' then statistic
+    when '/stats' then show_page('statistics')
     when '/show_hint' then hint
     else show_page('error404')
     end
   end
 
-  def statistic
-    binding.pry
-    Codebreaker::Statistics.winners(load_db)
-    show_page('statistics')
+  def data_base
+    console = Codebreaker::Console.new
+    base = console.load_db
+    Codebreaker::Statistics.new.winners(base)
   end
 
   def check_game_state
@@ -66,8 +65,8 @@ class Racker
   def markers_answer
     return ['', '', '', ''] unless @request.session[:markers]
     marks = @request.session[:markers].chars
-    Codebreaker::Game::RANGE_OF_DIGITS.last.times { marks.push('') }
-    marks.first(Codebreaker::Game::RANGE_OF_DIGITS.last)
+    Codebreaker::Game::AMOUNT_DIGITS.times { marks.push('') }
+    marks.first(Codebreaker::Game::AMOUNT_DIGITS)
   end
 
   def start
