@@ -1,11 +1,56 @@
 --- !ruby/object:Codebreaker::Game
 got_hints: ''
 hints_used: 0
-attempts_used: 1
-name: 1234wadwd
+attempts_used: 13
+name: Awdada
 attempts_total: 15
 hints_total: 2
-attempts_left: 14
+attempts_left: 2
 difficulty: easy
-secret_code: '1234'
-date: 2019-01-31 01:56:39.635634974 +02:00
+secret_code: '4255'
+date: 2019-01-31 11:34:10.563683828 +02:00
+have_hints: 2
+errors: []
+winner: true
+--- !ruby/object:Codebreaker::Game
+got_hints: ''
+hints_used: 2
+attempts_used: 10
+name: Awdada
+attempts_total: 15
+hints_total: 2
+attempts_left: 5
+difficulty: hard
+secret_code: '4255'
+date: 2019-01-31 11:34:10.563683828 +02:00
+have_hints: 2
+errors: []
+winner: true
+--- !ruby/object:Codebreaker::Game
+got_hints: ''
+hints_used: 0
+attempts_used: 13
+name: Awdada
+attempts_total: 15
+hints_total: 2
+attempts_left: 2
+difficulty: easy
+secret_code: '4255'
+date: 2019-01-31 11:34:10.563683828 +02:00
+have_hints: 2
+errors: []
+winner: true
+--- !ruby/object:Codebreaker::Game
+got_hints: ''
+hints_used: 2
+attempts_used: 10
+name: Awdada
+attempts_total: 15
+hints_total: 2
+attempts_left: 5
+difficulty: hard
+secret_code: '4255'
+date: 2019-01-31 11:34:10.563683828 +02:00
+have_hints: 2
+errors: []
+winner: true

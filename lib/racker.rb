@@ -21,6 +21,11 @@ class Racker
     end
   end
 
+  def save_result
+    console = Codebreaker::Console.new
+    console.save_to_db(current_game)
+  end
+
   def data_base
     console = Codebreaker::Console.new
     base = console.load_db
@@ -30,8 +35,12 @@ class Racker
   def check_game_state
     return show_page('menu') unless current_game
     return show_page('game') if game_go_on?
-    return show_page('win') if current_game.winner
+    return win if current_game.winner
     return show_page('lose') if current_game.attempts_left == ZERO_ATTEMPTS
+  end
+
+  def win
+    save_result and return show_page('win')
   end
 
   def game_go_on?

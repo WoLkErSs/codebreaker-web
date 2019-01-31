@@ -1,8 +1,6 @@
 
 %p.lead.text-white-70 Top of Players:
 %hr.mb-4/
-=data_base
-=data_base[0][6]
 .table-responsive-md.scores
   %table.table.table-striped.table.table-sm
     %thead
@@ -14,34 +12,14 @@
         %th{scope: "col"} Hints Left
         %th{scope: "col"} Date
     %tbody
-      %tr
-        %th{scope: "row"} 1
-        %td #{data_base[0][0]}
-        %td #{data_base[0][1]}
-        %td #{data_base[0][3]} / #{data_base[0][2]}
-        %td #{data_base[0][4]} / #{data_base[0][5]}
-        %td #{data_base[0][6].to_s.split('').first(16).join('')}
-      %tr
-        %th{scope: "row"} 2
-        %td Player 1
-        %td Middle
-        %td 8/10
-        %td 3/3
-        %td 2018.12.04 - 17:00:01
-      %tr
-        %th{scope: "row"} 3
-        %td Player 1
-        %td Middle
-        %td 8/10
-        %td 3/3
-        %td 2018.12.04 - 17:00:01
-      %tr
-        %th{scope: "row"} 4
-        %td Player 1
-        %td Middle
-        %td 8/10
-        %td 3/3
-        %td 2018.12.04 - 17:00:01
+      -data_base.each_with_index do |record, index|
+        %tr
+          %th{scope: "row"} #{index + 1}
+          %td #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:name]]}
+          %td #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:level]]}
+          %td #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:attempts_left]]} / #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:attempts_total]]}
+          %td #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:have_left]]} / #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:hints_total]]}
+          %td #{record[Codebreaker::Statistics::COLUMN_NUMBERS[:date]].strftime("%d/%m/%Y %I:%M %p")}
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{href: "/", role: "button"}
   =I18n.t(:'back')
