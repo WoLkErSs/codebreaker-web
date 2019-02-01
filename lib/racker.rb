@@ -1,5 +1,5 @@
 class Racker
-  ZERO_ATTEMPTS = 0.freeze
+  ZERO_ATTEMPTS = 0
 
   def self.call(env)
     new(env).response.finish
@@ -81,15 +81,19 @@ class Racker
   def start
     return show_page('menu') unless @request.params['player_name']
 
-    @request.session[:hints] = ''
-    @request.session[:name] = @request.params['player_name']
-    @request.session[:level] = @request.params['level']
+    save_game_info
     current_player = Codebreaker::Player.new
     current_player.assign_name(@request.params['player_name'].capitalize)
     game = Codebreaker::Game.new
     game.game_options(user_difficulty: @request.params['level'], player: current_player)
     @request.session[:game] = game
     redirect_to('game')
+  end
+
+  def save_game_info
+    @request.session[:hints] = ''
+    @request.session[:name] = @request.params['player_name']
+    @request.session[:level] = @request.params['level']
   end
 
   def redirect_to(url)
