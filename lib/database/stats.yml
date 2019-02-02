@@ -54,3 +54,17 @@ date: 2019-01-31 11:34:10.563683828 +02:00
 have_hints: 2
 errors: []
 winner: true
+--- !ruby/object:Codebreaker::Game
+got_hints: ''
+hints_used: 0
+attempts_used: 4
+name: 1awdaws
+attempts_total: 5
+hints_total: 1
+have_hints: 1
+attempts_left: 1
+difficulty: expert
+errors: []
+secret_code: '3512'
+date: 2019-02-02 09:55:49.185233628 +02:00
+winner: true
