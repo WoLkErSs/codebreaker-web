@@ -1,5 +1,5 @@
-require 'haml'
-require 'codebreaker'
 require 'i18n'
+require 'codebreaker'
+require 'haml'
 require_relative './lib/racker'
 require_relative './config_locales.rb'
