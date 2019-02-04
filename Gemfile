@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-ruby '2.4.5'
 
 gem 'codebreaker_PI'
 gem 'rack'
@@ -23,3 +22,5 @@ group :test do
   gem 'simplecov', require: false, group: :test
   gem 'simplecov-lcov'
 end
+
+ruby '2.4.5'
