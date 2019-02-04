@@ -10,6 +10,7 @@ gem 'codebreaker_PI'
 gem 'rack'
 gem 'haml'
 gem 'i18n'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry'
