@@ -12,7 +12,7 @@
         =I18n.t(:'game.from')
         =current_game.attempts_total
   .col.button
-    %button.btn.btn-primary.float-right{type: "button"}
+    %button.btn.btn-primary.float-right{disabled: "disabled", type: "button"}
       =I18n.t(:'game.hints')
       %span.badge.badge-light
         =current_game.have_hints
@@ -28,8 +28,8 @@
         =I18n.t(:'lose.code')
         %strong
           =current_game.secret_code.join('')
-        - clear_session
-    %img.img-fluid{alt: "You lose the game!", src: "assets/images/lost.gif"}/
+        -clear_session
+    %img.img-fluid{alt: "You lose the game!", src: "public/assets/images/lost.gif"}/
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{href: "/", role: "button"}
   =I18n.t(:'play_again_btn')

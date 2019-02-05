@@ -12,7 +12,7 @@
         =I18n.t(:'game.from')
         =current_game.attempts_total
   .col.button
-    %button.btn.btn-primary.float-right{type: "button"}
+    %button.btn.btn-primary.float-right{disabled: "disabled", type: "button"}
       =I18n.t(:'game.hints')
       %span.badge.badge-light
         =current_game.have_hints
@@ -26,7 +26,7 @@
         =I18n.t(:'win', name: -current_game.name)
 
         - clear_session
-    %img.img-fluid{alt: -I18n.t(:you_won), src: "assets/images/won.gif"}/
+    %img.img-fluid{alt: -I18n.t(:you_won), src: "public/assets/images/won.gif"}/
 %hr.mb-4/
 %a.btn.btn-primary.btn-lg{href: "/", role: "button"}
   =I18n.t(:'play_again_btn')
