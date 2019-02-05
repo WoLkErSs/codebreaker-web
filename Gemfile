@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ruby '2.4.5'
 
 source 'https://rubygems.org'
@@ -18,6 +19,6 @@ end
 
 group :test do
   gem 'rspec', '~> 3.8'
-  gem 'simplecov', require: false, group: :test
+  gem 'simplecov', require: false
   gem 'simplecov-lcov'
 end

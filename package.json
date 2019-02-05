@@ -6,7 +6,6 @@
   "author": "Ivan Pauls <ivanpauls1705@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "8.15.0",
     "yarn": "1.13.0"
   },
   "dependencies": {
