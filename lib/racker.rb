@@ -1,4 +1,3 @@
-require 'pry'
 class Racker
   ZERO_ATTEMPTS = 0
 
