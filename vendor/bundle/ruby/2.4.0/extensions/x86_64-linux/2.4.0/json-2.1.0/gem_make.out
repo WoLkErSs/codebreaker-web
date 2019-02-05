@@ -1,0 +1,13 @@
+current directory: /home/wolkerss/dev/codebreaker-web/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+/home/wolkerss/.rvm/rubies/ruby-2.4.5/bin/ruby -r ./siteconf20190205-5919-xuva0.rb extconf.rb
+creating Makefile
+
+current directory: /home/wolkerss/dev/codebreaker-web/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/wolkerss/dev/codebreaker-web/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Цель «all» не требует выполнения команд.
+
+current directory: /home/wolkerss/dev/codebreaker-web/vendor/bundle/ruby/2.4.0/gems/json-2.1.0/ext/json
+make "DESTDIR=" install

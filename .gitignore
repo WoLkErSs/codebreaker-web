@@ -1,5 +1,5 @@
 .history
 .DS_Store
 /node_modules
-/lib/database/stats.yml
+/stats.yml
 /yarn.lock

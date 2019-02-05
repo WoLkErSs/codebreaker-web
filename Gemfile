@@ -6,9 +6,9 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
+gem 'rack'
 gem 'codebreaker_PI'
 gem 'i18n'
-gem 'rack'
 gem 'haml'
 
 group :development do
