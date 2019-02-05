@@ -1,3 +1,4 @@
+require 'pry'
 class Racker
   ZERO_ATTEMPTS = 0
 
@@ -15,10 +16,19 @@ class Racker
     when '/check_number' then check_number
     when '/start' then start
     when '/rules' then show_page('rules')
-    when '/stats' then show_page('statistics')
+    when '/stats' then stats
     when '/show_hint' then hint
     else show_page('error404')
     end
+  end
+
+  def stats
+    return show_page('no_stats') unless File.exist?('../database/stats.yml')
+    show_page('statistics')
+  end
+
+  def file_exists?
+    File.exist?('../database/stats.yml')
   end
 
   def save_result

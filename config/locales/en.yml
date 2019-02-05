@@ -49,3 +49,4 @@ en:
     hints_total: 'Hints Total'
     hints_used: 'Hints Used'
   table_heder: 'Codebreaker statistics'
+  no_stats: 'No winners statistics'
