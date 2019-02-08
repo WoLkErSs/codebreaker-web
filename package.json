@@ -1,0 +1,17 @@
+{
+  "name": "codebreaker-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/WoLkErSs/codebreaker-web.git",
+  "author": "Ivan Pauls <ivanpauls1705@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "yarn": "1.13.0",
+    "node": "8.15.0"
+  },
+  "dependencies": {
+    "bootstrap": "4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.6"
+  }
+}

@@ -1,0 +1,34 @@
+.row
+  .col.button
+    %button.btn.btn-primary{disabled: "disabled", type: "button"}
+      =I18n.t(:'game.level')
+      %span.badge.badge-light
+        =level
+  .col.text-center.button
+    %button.btn.btn-primary{disabled: "disabled", type: "button"}
+      =I18n.t(:'game.attempts')
+      %span.badge.badge-light
+        =current_game.attempts_left
+        =I18n.t(:'game.from')
+        =current_game.attempts_total
+  .col.button
+    %button.btn.btn-primary.float-right{disabled: "disabled", type: "button"}
+      =I18n.t(:'game.hints')
+      %span.badge.badge-light
+        =current_game.have_hints
+        =I18n.t(:'game.from')
+        =current_game.hints_total
+%hr.mb-4/
+.row
+  .text-center
+    .text-center
+      %h3.text-white
+        =I18n.t(:'win', name: -current_game.name)
+
+        - clear_session
+    %img.img-fluid{alt: -I18n.t(:you_won), src: "public/assets/images/won.gif"}/
+%hr.mb-4/
+%a.btn.btn-primary.btn-lg{href: "/", role: "button"}
+  =I18n.t(:'play_again_btn')
+%a.btn.btn-success.btn-lg.float-right{href: "/stats", role: "button"}
+  =I18n.t(:stats_btn)

@@ -1,0 +1,27 @@
+.row
+  %p.lead.text-white-70
+    =I18n.t(:'menu.short_rules')
+%hr.mb-4/
+%form{:action => "start", :method => "post"}
+  .form-group
+    %label.lead.label{:for => "player_name"}
+      =I18n.t(:'menu.place_name')
+    %input#player_name.form-control{:autofocus => "", :name => "player_name", :pattern => "^[\\w\\u0400-\\u04ff]{3,20}$", :placeholder => "#{-I18n.t(:'menu.plaseholder_name')}", :required => ""}/
+  .form-group
+    %label.lead.label{:for => "level"}
+      =I18n.t(:'menu.place_level')
+
+    %select.custom-select{:name => "level", :required => ""}
+      %option{:value => ""}
+        =I18n.t(:'menu.plaseholder_game')
+      %option{:value => "easy"} #{-I18n.t(:'menu.easy')}
+      %option{:value => "hard"} #{-I18n.t(:'menu.hard')}
+      %option{:value => "expert"} #{-I18n.t(:'menu.expert')}
+  %hr.mb-4/
+  %button.btn.btn-primary.btn-lg{:type => "submit"}
+    =I18n.t(:'menu.start_btn')
+  %span.float-right
+    %a.btn.btn-warning.btn-lg{:href => "/rules", :role => "button"}
+      =I18n.t(:'menu.rules_btn')
+    %a.btn.btn-success.btn-lg{:href => "/stats", :role => "button"}
+      =I18n.t(:stats_btn)
